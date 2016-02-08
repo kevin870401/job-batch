@@ -20,17 +20,15 @@ public class DossierBatchJobLog implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    //we don't do eager fetch to job object here since user would like to view log separately other than in the same page
     @Column(name = "JOB_ID")
     private long jobId;
-//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "JOB_ID", nullable = false, updatable = false, insertable = true)
-//    private DossierBatchJob job;
 
-    @Column(name = "LOG_TIMESTAMP")
+    @Column(name = "LOG_TIMESTAMP",insertable = false, updatable = false)
     private Date timestamp;
 
-    @Column(name = "LOG_USERID")
-    private long userId;
+    @Column(name = "LOG_USERID",insertable = false, updatable = false)
+    private String userId;
 
     @Column(name = "LOG_TYPE")
     private String type;

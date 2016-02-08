@@ -30,7 +30,7 @@ public class DossierBatchJobParameter implements Serializable {
     private long id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "JOB_ID", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "JOB_ID")
     private DossierBatchJob job;
 
     @Column(name = "PARAM_KEY")

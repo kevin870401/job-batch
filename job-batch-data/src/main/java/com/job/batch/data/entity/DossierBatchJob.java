@@ -33,7 +33,7 @@ public class DossierBatchJob implements Serializable {
     @Column(name = "PRIORITY")
     private String priority;
 
-    @Column(name = "CREATE_TIMESTAMP")
+    @Column(name = "CREATE_TIMESTAMP",insertable = false, updatable = false)
     private String createTime;
 
     @Column(name = "DESCRIPTION")
@@ -49,10 +49,6 @@ public class DossierBatchJob implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
     @OrderBy("id ASC")
     private List<DossierBatchJobParameter> parameters;
-
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
-//    @OrderBy("id ASC")
-//    private List<DossierBatchJobLog> logs;
 
     @Override
     public String toString() {

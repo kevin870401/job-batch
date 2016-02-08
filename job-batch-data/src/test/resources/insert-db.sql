@@ -14,3 +14,11 @@ VALUES
   (1, 'IRN', '123456789'),
   (1, 'OWNER', 'psob admin'),
   (2, 'IRN', '987654321');
+
+
+
+INSERT INTO PUBLIC.DOSSIER_BATCH_LOG (JOB_ID, LOG_TIMESTAMP, LOG_USERID,LOG_TYPE,LOG_DATA)
+VALUES
+  (1,CURRENT_TIMESTAMP, CURRENT_USER, 'APP','this is a log generated from APP'),
+  (1, CURRENT_TIMESTAMP,CURRENT_USER, 'CUS','this is a custom app'),
+  (2, CURRENT_TIMESTAMP, CURRENT_USER, 'APP','this is a log generated from APP');
