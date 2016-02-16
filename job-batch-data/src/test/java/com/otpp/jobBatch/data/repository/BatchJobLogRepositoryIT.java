@@ -1,26 +1,18 @@
-package com.job.batch.data.repository;
+package com.otpp.jobBatch.data.repository;
 
-import com.job.batch.data.ITContext;
-import com.job.batch.data.entity.DossierBatchJob;
-import com.job.batch.data.entity.DossierBatchJobLog;
-import com.job.batch.data.entity.DossierBatchJobParameter;
-import com.job.batch.data.entity.enums.DossierBatchJobStatus;
+import com.otpp.jobBatch.data.entity.BatchJobLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-@ContextConfiguration(classes = ITContext.class)
 @Transactional
 public class BatchJobLogRepositoryIT extends ITTestBase {
     private Pageable pageable= new PageRequest(0,10,new Sort(new Sort.Order(Sort.Direction.ASC, "id")));
@@ -28,7 +20,7 @@ public class BatchJobLogRepositoryIT extends ITTestBase {
     private BatchJobLogRepository batchJobLogRepository;
     @Test
     public void findByJobId_AnExistingJobId_success(){
-        List<DossierBatchJobLog> result = batchJobLogRepository.findByJobId(1, pageable);
+        List<BatchJobLog> result = batchJobLogRepository.findByJobId(1, pageable);
         assertThat(result.size()).isEqualTo(2);
         assertThat(result.get(0).getUserId()).isEqualTo("SA");
         assertThat(result.get(0).getType()).isEqualTo("APP");
@@ -38,27 +30,27 @@ public class BatchJobLogRepositoryIT extends ITTestBase {
 
     @Test
     public void findByJobId_ANonExistingJobId_zeroFound(){
-        List<DossierBatchJobLog> result = batchJobLogRepository.findByJobId(99, pageable);
+        List<BatchJobLog> result = batchJobLogRepository.findByJobId(99, pageable);
         assertThat(result.size()).isEqualTo(0);
     }
 
     @Test
     public void saveAndFlush_persistToAnExisingJob_success(){
-        DossierBatchJobLog dossierBatchJobLog = new DossierBatchJobLog();
-        dossierBatchJobLog.setType("App");
-        dossierBatchJobLog.setData("new log");
-        dossierBatchJobLog.setJobId(1);
-        DossierBatchJobLog result= batchJobLogRepository.saveAndFlush(dossierBatchJobLog);
+        BatchJobLog batchJobLog = new BatchJobLog();
+        batchJobLog.setType("App");
+        batchJobLog.setData("new log");
+        batchJobLog.setJobId(1);
+        BatchJobLog result= batchJobLogRepository.saveAndFlush(batchJobLog);
         assertThat(result.getId()).isNotNull();
     }
 
     @Test(expectedExceptions = DataIntegrityViolationException.class)
     public void saveAndFlush_persistToANonExistingJob_failed(){
-        DossierBatchJobLog dossierBatchJobLog = new DossierBatchJobLog();
-        dossierBatchJobLog.setType("App");
-        dossierBatchJobLog.setData("new log");
-        dossierBatchJobLog.setJobId(99);
-        batchJobLogRepository.saveAndFlush(dossierBatchJobLog);
+        BatchJobLog batchJobLog = new BatchJobLog();
+        batchJobLog.setType("App");
+        batchJobLog.setData("new log");
+        batchJobLog.setJobId(99);
+        batchJobLogRepository.saveAndFlush(batchJobLog);
     }
 
 }

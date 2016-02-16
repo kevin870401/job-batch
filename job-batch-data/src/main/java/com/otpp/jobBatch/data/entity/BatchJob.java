@@ -1,7 +1,7 @@
-package com.job.batch.data.entity;
+package com.otpp.jobBatch.data.entity;
 
 
-import com.job.batch.data.entity.enums.DossierBatchJobStatus;
+import com.otpp.jobBatch.data.entity.enums.DossierBatchJobStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,7 +9,8 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
+import java.util.UUID;
+
 import com.google.common.collect.Iterables;
 
 @Getter
@@ -18,20 +19,20 @@ import com.google.common.collect.Iterables;
 @Entity
 //@EqualsAndHashCode
 @Table(name = "DOSSIER_BATCH_JOB")
-public class DossierBatchJob implements Serializable {
+public class BatchJob implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "UUID")
-    private String uuid;
+    private UUID uuid;
 
     @Column(name = "JOB_TYPE")
     private String type;
 
     @Column(name = "PRIORITY")
-    private String priority;
+    private short priority;
 
     @Column(name = "CREATE_TIMESTAMP",insertable = false, updatable = false)
     private String createTime;
@@ -48,11 +49,11 @@ public class DossierBatchJob implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "job")
     @OrderBy("id ASC")
-    private List<DossierBatchJobParameter> parameters;
+    private List<BatchJobParameter> parameters;
 
     @Override
     public String toString() {
-        return String.join("DossierBatchJob(" , String.valueOf(this.getId()) , ", " ,this.getUuid() + ", " , this.getType() + ", " , this.getPriority() + ", " , this.getCreateTime() + ", " , this.getDescription() + ", " , this.getResult() + ", " , this.getParameters().toString(),")");
+        return String.join( String.valueOf(this.getId()) , ", " ,this.getUuid() + ", " , this.getType() + ", " , this.getPriority() + ", " , this.getCreateTime() + ", " , this.getDescription() + ", " , this.getResult() + ", " , this.getParameters().toString(),")");
     }
 
 
@@ -64,13 +65,13 @@ public class DossierBatchJob implements Serializable {
             result = true;
         } else {
 
-            if (!(object instanceof DossierBatchJob)) {
+            if (!(object instanceof BatchJob)) {
                 result = false;
             } else {
-                DossierBatchJob other = (DossierBatchJob) object;
+                BatchJob other = (BatchJob) object;
                 if (other.getId() != this.getId() || !other.getUuid().equals( this.getUuid())
                         || !other.getDescription().equals( this.getDescription())
-                        || !other.getPriority().equals(this.getPriority())
+                        || other.getPriority()!=(this.getPriority())
                         || !other.getType().equals(this.getType())
                         || !other.getCreateTime().equals(this.getCreateTime())
                         || !other.getResult().equals(this.getResult())
@@ -90,7 +91,7 @@ public class DossierBatchJob implements Serializable {
         result = prime * result + new Long(id).hashCode();
         result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
         result = prime * result + ((type == null) ? 0 : type.hashCode());
-        result = prime * result + ((priority == null) ? 0 : priority.hashCode());
+        result = prime * result + new Short(priority).hashCode();//((priority == null) ? 0 : priority.hashCode());
         result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((status == null) ? 0 : status.hashCode());

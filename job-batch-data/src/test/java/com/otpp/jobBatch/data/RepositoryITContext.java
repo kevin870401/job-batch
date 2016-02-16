@@ -1,4 +1,4 @@
-package com.job.batch.data;
+package com.otpp.jobBatch.data;
 
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -22,11 +22,11 @@ import javax.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"com.job.batch.data.entity"})
-@EnableJpaRepositories(basePackages = "com.job.batch.data.repository")
+@EntityScan(basePackages = {"com.otpp.jobBatch.data.entity"})
+@EnableJpaRepositories(basePackages = "com.otpp.jobBatch.data.repository")
 @PropertySource("classpath:it.properties")
 @EnableTransactionManagement
-public class ITContext {
+public class RepositoryITContext {
 
     @Bean
     public EmbeddedDatabase dataSource() {

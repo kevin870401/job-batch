@@ -1,4 +1,4 @@
-package com.job.batch.data.entity;
+package com.otpp.jobBatch.data.entity;
 
 
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.util.Date;
 @ToString(includeFieldNames = true)
 @Entity
 @Table(name = "DOSSIER_BATCH_LOG")
-public class DossierBatchJobLog implements Serializable {
+public class BatchJobLog implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,7 +39,7 @@ public class DossierBatchJobLog implements Serializable {
     @Override
     public String toString() {
         return String.join(
-                "DossierBatchJob(" ,
+                "BatchJob(" ,
                 String.valueOf(this.getId()) , ", " ,
                 String.valueOf(this.getJobId()) , ", " ,
                 this.getTimestamp().toString() , ", " ,
@@ -55,10 +55,10 @@ public class DossierBatchJobLog implements Serializable {
             result= true;
         }else {
 
-            if (!(object instanceof DossierBatchJobLog)) {
+            if (!(object instanceof BatchJobLog)) {
                 result = false;
             } else {
-                DossierBatchJobLog other = (DossierBatchJobLog) object;
+                BatchJobLog other = (BatchJobLog) object;
                 if (other.getId() != this.getId() || other.getJobId()!=( this.getJobId())|| !other.getTimestamp().equals( this.getTimestamp()) || !other.getType().equals( this.getType())|| other.getUserId()!=( this.getUserId())|| !other.getData().equals( this.getData())) {
                     result = false;
                 }

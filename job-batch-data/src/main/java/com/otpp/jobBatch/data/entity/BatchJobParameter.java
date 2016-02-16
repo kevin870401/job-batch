@@ -1,4 +1,4 @@
-package com.job.batch.data.entity;
+package com.otpp.jobBatch.data.entity;
 
 
 import lombok.Getter;
@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 
 //ID IDENTITY,
@@ -22,7 +21,7 @@ import java.util.Date;
 @ToString(includeFieldNames = true)
 @Entity
 @Table(name = "DOSSIER_BATCH_PARAM")
-public class DossierBatchJobParameter implements Serializable {
+public class BatchJobParameter implements Serializable {
 
     @Id
     @Column(name = "ID")
@@ -31,7 +30,7 @@ public class DossierBatchJobParameter implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "JOB_ID")
-    private DossierBatchJob job;
+    private BatchJob job;
 
     @Column(name = "PARAM_KEY")
     private String parameterKey;
@@ -41,7 +40,7 @@ public class DossierBatchJobParameter implements Serializable {
 
     @Override
     public String toString() {
-        return "DossierBatchJobParameter(" + this.getId() + ", " + this.getParameterKey() + ", " + this.getParameterValue() + ")";
+        return "BatchJobParameter(" + this.getId() + ", " + this.getParameterKey() + ", " + this.getParameterValue() + ")";
     }
     @Override
     public boolean equals(Object object) {
@@ -50,10 +49,10 @@ public class DossierBatchJobParameter implements Serializable {
             result= true;
         }else {
 
-            if (!(object instanceof DossierBatchJobParameter)) {
+            if (!(object instanceof BatchJobParameter)) {
                 result = false;
             } else {
-                DossierBatchJobParameter other = (DossierBatchJobParameter) object;
+                BatchJobParameter other = (BatchJobParameter) object;
                 if (other.getId() != this.getId() || !other.getParameterKey().equals( this.getParameterKey()) || !other.getParameterValue().equals( this.getParameterValue())) {
                     result = false;
                 }

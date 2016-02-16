@@ -1,6 +1,6 @@
-package com.job.batch.data.repository;
+package com.otpp.jobBatch.data.repository;
 
-import com.job.batch.data.ITContext;
+import com.otpp.jobBatch.data.RepositoryITContext;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -9,7 +9,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-@ContextConfiguration(classes = ITContext.class)
+@ContextConfiguration(classes = RepositoryITContext.class)
 public class ITTestBase extends AbstractTestNGSpringContextTests {
     private EmbeddedDatabase db;
 

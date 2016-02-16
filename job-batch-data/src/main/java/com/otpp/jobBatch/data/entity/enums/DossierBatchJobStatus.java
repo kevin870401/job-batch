@@ -1,4 +1,4 @@
-package com.job.batch.data.entity.enums;
+package com.otpp.jobBatch.data.entity.enums;
 
 
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -7,7 +7,7 @@ import lombok.Data;
 
 public enum DossierBatchJobStatus {
 
-    NEW("NEW"),PND("pending"),RUN("RUN"),FLD("FAILED"),CPT("CPT");
+    NEW("NEW"),PND("PND"),RUN("RUN"),FLD("FAILED"),CPT("CPT");
 
     private String jobStatusCode;
     private DossierBatchJobStatus(String jobStatusCode){
