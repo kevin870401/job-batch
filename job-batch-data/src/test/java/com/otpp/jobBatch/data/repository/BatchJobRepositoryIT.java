@@ -125,7 +125,7 @@ public class BatchJobRepositoryIT extends ITTestBase {
     @Test
     public void updateJobStatus_validJobStatus_sucess(){
 
-        batchJobRepository.updateJobStatus(1,"PND");
+        batchJobRepository.updateJobStatus(1,DossierBatchJobStatus.PND);
 
         assertThat(100).isEqualTo(1);
     }

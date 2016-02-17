@@ -1,7 +1,7 @@
-package com.job.batch.ws.config;
+package com.otpp.batchJob.ws.config;
 
-import com.job.batch.ws.controller.BatchJobCommandController;
-import com.job.batch.ws.controller.BatchJobQueryController;
+import com.otpp.batchJob.ws.controller.BatchJobCommandController;
+import com.otpp.batchJob.ws.controller.BatchJobQueryController;
 import com.otpp.batchJob.service.command.BatchJobCommandService;
 import com.otpp.batchJob.service.query.BatchJobLogQueryService;
 import com.otpp.batchJob.service.query.BatchJobQueryService;

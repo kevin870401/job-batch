@@ -1,10 +1,10 @@
-package com.job.batch.ws;
+package com.otpp.batchJob;
 
-import com.job.batch.ws.config.ControllerConfiguration;
-import com.job.batch.ws.config.WebConfiguration;
 import com.otpp.batchJob.domain.config.DomainConfig;
 import com.otpp.batchJob.service.command.CommandServiceConfig;
 import com.otpp.batchJob.service.query.QueryServiceConfig;
+import com.otpp.batchJob.ws.config.ControllerConfiguration;
+import com.otpp.batchJob.ws.config.WebConfiguration;
 import com.otpp.jobBatch.data.config.DataContext;
 import com.otpp.jobBatch.data.entity.BatchJob;
 import com.otpp.jobBatch.data.entity.BatchJobLog;
@@ -31,7 +31,6 @@ import java.util.UUID;
 @Import({ControllerConfiguration.class, QueryServiceConfig.class, CommandServiceConfig.class, WebConfiguration.class, DomainConfig.class, DataContext.class})
 public class Application {
 
-    private static final UUID UUID1 = UUID.fromString("07ac789c-d19c-11e5-ab30-625662870761");
     private static final UUID UUIDNEW = UUID.fromString("07ac8436-d19c-11e5-ab30-625662870761");
     private static final String BTCHANNSTATPROTO = "BTCHANNSTATPROTO";
     private static final short FIRST_PRIORITY = 1;

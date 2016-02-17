@@ -1,9 +1,6 @@
 package com.otpp.batchJob.domain.config;
 
-import com.otpp.batchJob.domain.mappers.BatchJobCreateCommandDtoMapper;
-import com.otpp.batchJob.domain.mappers.BatchJobLogCreateCommandDtoMapper;
-import com.otpp.batchJob.domain.mappers.BatchJobLogMapper;
-import com.otpp.batchJob.domain.mappers.BatchJobMapper;
+import com.otpp.batchJob.domain.mappers.*;
 import com.otpp.jobBatch.data.config.DataContext;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -36,5 +33,10 @@ public class DomainConfig {
     @Bean
     public BatchJobLogCreateCommandDtoMapper batchJobLogCreateCommandDtoMapper(){
         return new BatchJobLogCreateCommandDtoMapper(defaultMapperFactory());
+    }
+
+    @Bean
+    public BatchJobStatusUpdateCommandDtoMapper batchJobStatusUpdateCommandDtoMapper(){
+        return new BatchJobStatusUpdateCommandDtoMapper(defaultMapperFactory());
     }
 }

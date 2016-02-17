@@ -1,11 +1,13 @@
 package com.otpp.batchJob.domain.query;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Data;
 import lombok.ToString;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -36,7 +38,8 @@ public class BatchJob {
     private String uuid;
     private String type;
     private short priority;
-    private String createTime;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy hh:mm:ss")
+    private Date createTime;
     private String description;
     private BatchJobStatus status;
     private String result;

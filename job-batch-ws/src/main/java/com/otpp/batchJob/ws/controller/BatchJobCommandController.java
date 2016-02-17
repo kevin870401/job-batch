@@ -1,4 +1,4 @@
-package com.job.batch.ws.controller;
+package com.otpp.batchJob.ws.controller;
 
 import com.otpp.batchJob.domain.command.BatchJobCreateCommandDto;
 import com.otpp.batchJob.domain.command.BatchJobLogCreateCommandDto;
@@ -24,13 +24,13 @@ public class BatchJobCommandController {
         return batchJobCommandService.createBatchJob(batchJobCreateCommandDto);
     }
 
-    @RequestMapping(value = "/updateStatus", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateStatus", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public void updateBatchJobStatus(@RequestBody BatchJobStatusUpdateCommandDto batchJobStatusUpdateCommandDto) {
         batchJobCommandService.updateBatchJobStatus(batchJobStatusUpdateCommandDto);
     }
 
-    @RequestMapping(value = "/insertLog", method = RequestMethod.GET)
+    @RequestMapping(value = "/insertLog", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public void getJobByStatusOrType(@RequestBody BatchJobLogCreateCommandDto batchJobLogCreateCommandDto) {
         batchJobCommandService.insertBatchJobLog(batchJobLogCreateCommandDto);

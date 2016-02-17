@@ -7,7 +7,7 @@ import lombok.Data;
 
 public enum DossierBatchJobStatus {
 
-    NEW("NEW"),PND("PND"),RUN("RUN"),FLD("FAILED"),CPT("CPT");
+    NEW("new"),PND("pending"),RUN("run"),FLD("failed"),CPT("complete");
 
     private String jobStatusCode;
     private DossierBatchJobStatus(String jobStatusCode){

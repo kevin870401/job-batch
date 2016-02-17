@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,8 +35,8 @@ public class BatchJob implements Serializable {
     @Column(name = "PRIORITY")
     private short priority;
 
-    @Column(name = "CREATE_TIMESTAMP",insertable = false, updatable = false)
-    private String createTime;
+    @Column(name = "CREATE_TIMESTAMP",insertable = false, updatable = false,nullable=false,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Date createTime;
 
     @Column(name = "DESCRIPTION")
     private String description;

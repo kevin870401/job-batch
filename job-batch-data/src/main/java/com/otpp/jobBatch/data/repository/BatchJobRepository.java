@@ -31,6 +31,6 @@ public interface BatchJobRepository extends JpaRepository<BatchJob, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE com.otpp.jobBatch.data.entity.BatchJob job SET job.result=:status WHERE job.id=:id")
-    void updateJobStatus(@Param("id") long id,@Param("status") String status);
+    @Query("UPDATE com.otpp.jobBatch.data.entity.BatchJob job SET job.status=:status WHERE job.id=:id")
+    void updateJobStatus(@Param("id") long id,@Param("status") DossierBatchJobStatus status);
 }

@@ -38,7 +38,7 @@ public class BatchJobCommandServiceImpl implements BatchJobCommandService {
     @Override
     public void updateBatchJobStatus(BatchJobStatusUpdateCommandDto batchJobStatusUpdateCommandDto) {
 
-        batchJobRepository.updateJobStatus(batchJobStatusUpdateCommandDto.getId(),batchJobStatusUpdateCommandDto.getBatchJobStatus().getJobStatusCode() );
+        batchJobRepository.updateJobStatus(batchJobStatusUpdateCommandDto.getId(), batchJobStatusUpdateCommandDtoMapper.mapDomainToDb(batchJobStatusUpdateCommandDto) );
     }
 
     @Override

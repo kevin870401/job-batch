@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -24,10 +25,10 @@ public class BatchJobLog implements Serializable {
     @Column(name = "JOB_ID")
     private long jobId;
 
-    @Column(name = "LOG_TIMESTAMP",insertable = false, updatable = false)
+    @Column(name = "LOG_TIMESTAMP",insertable = false, updatable = false,nullable=false,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date timestamp;
 
-    @Column(name = "LOG_USERID",insertable = false, updatable = false)
+    @Column(name = "LOG_USERID",insertable = false, updatable = false,nullable=false,columnDefinition="VARCHAR DEFAULT CURRENT_USER")
     private String userId;
 
     @Column(name = "LOG_TYPE")

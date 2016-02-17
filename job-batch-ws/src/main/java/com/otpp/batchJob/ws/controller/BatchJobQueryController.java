@@ -1,4 +1,4 @@
-package com.job.batch.ws.controller;
+package com.otpp.batchJob.ws.controller;
 
 import com.otpp.batchJob.domain.query.BatchJob;
 import com.otpp.batchJob.domain.query.BatchJobLog;

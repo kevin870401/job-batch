@@ -26,10 +26,6 @@ public class BatchJobStatusUpdateCommandDto {
             return jobStatusCode;
         }
 
-        @Override
-        public String toString(){
-            return getJobStatusCode();
-        }
     }
 
 }

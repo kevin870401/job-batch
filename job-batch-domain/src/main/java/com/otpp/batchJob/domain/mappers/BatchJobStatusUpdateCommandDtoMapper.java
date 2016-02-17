@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import java.util.UUID;
 
-public class BatchJobStatusUpdateCommandDtoMapper extends DefaultMapper<BatchJobStatusUpdateCommandDto, BatchJob> {
+public class BatchJobStatusUpdateCommandDtoMapper extends DefaultMapper<BatchJobStatusUpdateCommandDto, DossierBatchJobStatus> {
     @Autowired
     public BatchJobStatusUpdateCommandDtoMapper(MapperFactory mapperFactory) {
         super(mapperFactory);
@@ -26,16 +26,9 @@ public class BatchJobStatusUpdateCommandDtoMapper extends DefaultMapper<BatchJob
     }
 
     @Override
-    public BatchJob mapDomainToDb(BatchJobStatusUpdateCommandDto batchJobStatusUpdateCommandDto) {
-        BatchJob batchJob = getDefaultMapperFactory().getMapperFacade()
-                .map(batchJobStatusUpdateCommandDto, dbClass());
-        for (BatchJobParameter p : batchJob.getParameters()) {
-            p.setJob(batchJob);
-        }
-        batchJob.setResult("");
-        batchJob.setStatus(DossierBatchJobStatus.NEW);
-        batchJob.setUuid(UUID.randomUUID());
-        return batchJob;
+    public DossierBatchJobStatus mapDomainToDb(BatchJobStatusUpdateCommandDto batchJobStatusUpdateCommandDto) {
+        DossierBatchJobStatus dossierBatchJobStatus = DossierBatchJobStatus.valueOf( batchJobStatusUpdateCommandDto.getBatchJobStatus().toString());
+        return dossierBatchJobStatus;
     }
 
     @Override
@@ -54,8 +47,8 @@ public class BatchJobStatusUpdateCommandDtoMapper extends DefaultMapper<BatchJob
     }
 
     @Override
-    protected Class<BatchJob> dbClass() {
-        return BatchJob.class;
+    protected Class<DossierBatchJobStatus> dbClass() {
+        return DossierBatchJobStatus.class;
     }
 
     @Override
